@@ -38,6 +38,22 @@
         <input type="text" name="Last_Name" id="LastName" placeholder="Last Name" required>
       </div>
       <div>
+        <label for="Email">Email</label><br>
+        <input type="text" name="Email" id="Email" placeholder="Email" required>
+      </div>
+      <div>
+        <label for="Address">Address</label><br>
+        <input type="text" name="Address" id="Address" placeholder="Address" required>
+      </div>
+      <div>
+        <label for="Citty">City</label><br>
+        <input type="text" name="City" id="City" placeholder="City" required>
+      </div>
+      <div>
+        <label for="ZipCode">Zip Code</label><br>
+        <input type="text" name="Zip_Code" id="ZipCode" placeholder="Zip Code" required>
+      </div>
+      <div>
         <label for="Phone">Phone</label><br>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
       </div>
@@ -46,7 +62,7 @@
           <legend>Would you like to join our mailing list?</legend>
           <label>
             <input type="radio" name="Mailing_List" value="Yes" required> Yes<br>
-            <input type="radio" name="Mailing_List" value="No"> No (Respectfully)
+            <input type="radio" name="Mailing_List" value="No"> No 
           </label>
         </fieldset>
       </div>
@@ -83,7 +99,7 @@
     </form>
   </div>
     <footer>
-      <p><small>&copy; 2021-<span id="this-year"></span> by 
+      <p><small>&copy; 2024-<span id="this-year"></span> by 
           Lauren Ducay, All Rights Reserved ~ 
           <a id="html-checker" href="#" target="_blank">Check HTML</a> ~ 
           <a id="css-checker" href="#" target="_blank">Check CSS</a></small>
@@ -101,13 +117,32 @@
 
       urlParams.forEach(function(value,key){
 
+        switch(key){
+          case "First_Name":
+          case "Last_Name":
+          case "City":
+          case "Street_Address":
+            value = titleCase(value);
+          break;
+        }
+
         key = key.split("_").join(" ");
         myOutput += `<p>${key}: ${value}</p>`;
       });
       myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
       myOutput += `</div>`;
       document.querySelector("#output").innerHTML = myOutput;
+
+    } //end if
+
+    function titleCase(str){
+    str = str.split(" ");
+
+    for(let x = 0; x<str.length; x++){
+        str[x] = str[x].charAt(0).toUpperCase() + str[x].slice(1).toLowerCase();
     }
+    return str.join(" ");
+    }//end titlecase
   </script>  
  </body>
 </html>
